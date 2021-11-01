@@ -1,8 +1,7 @@
 /*
     Author: Emirhan Gocturk
-    Description: Game engine general boilerplate
-        that I will be using later. Setting up general
-        file structure and makefile setup/experiments
+    Description: Advanium game engine 
+        which belongs to Vaconia Entertainment
  */
 
 #include <SDL2/SDL.h>
