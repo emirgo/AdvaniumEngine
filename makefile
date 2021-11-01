@@ -1,7 +1,8 @@
 CC=g++
-EXE=advanium
+BUILD_PATH=build
+EXE=$(BUILD_PATH)/advanium
 
-setup: main.cpp
+advanium: main.cpp
 	$(CC) -F/Library/Frameworks -framework SDL2 -o $(EXE) main.cpp
 
 .PHONY: clean
