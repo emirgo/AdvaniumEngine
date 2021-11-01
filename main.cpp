@@ -35,16 +35,17 @@ int main( int argc, char* args[] )
     }
     else
     {
-      bool isRunning = true;
-      SDL_Event event;
-      while (isRunning)
-      {
+        // event loop
+        bool isRunning = true;
+        SDL_Event event;
+        while (isRunning)
+        {
         while (SDL_PollEvent(&event))
         {
-          if (event.type == SDL_QUIT)
-          {
+            if (event.type == SDL_QUIT)
+            {
             isRunning = false;
-          }
+            }
         }
 
         //Get window surface
@@ -59,7 +60,6 @@ int main( int argc, char* args[] )
         //Wait two seconds
         SDL_Delay(100);
       }
-      
     }
   }
 
