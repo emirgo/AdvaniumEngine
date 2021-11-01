@@ -4,8 +4,7 @@
         which belongs to Vaconia Entertainment
  */
 
-#include <SDL2/SDL.h>
-#include <stdio.h>
+#include "main.hpp"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
