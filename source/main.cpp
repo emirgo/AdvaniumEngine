@@ -10,7 +10,7 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-int main( int argc, char* args[] )
+int main(int argc, char* args[])
 {
   //The window we'll be rendering to
   SDL_Window* window = NULL;
@@ -19,25 +19,39 @@ int main( int argc, char* args[] )
   SDL_Surface* screenSurface = NULL;
 
   //Initialize SDL
-  if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+  if(SDL_Init( SDL_INIT_VIDEO ) < 0)
   {
     printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
   }
   else
   {
     //Create window
-    window = SDL_CreateWindow( "Advanium Engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL );
+    window = SDL_CreateWindow( "Advanium Engine", SDL_WINDOWPOS_UNDEFINED, 
+                SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL );
+                
     if( window == NULL )
     {
       printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
     }
     else
     {
-        // event loop
-        bool isRunning = true;
-        SDL_Event event;
-        while (isRunning)
-        {
+      //Get window surface
+      screenSurface = SDL_GetWindowSurface(window);
+
+      //Fill the surface white
+      SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
+      
+      //Update the surface
+      SDL_UpdateWindowSurface(window);
+
+      //Wait two seconds
+      SDL_Delay(100);
+
+      // event loop
+      bool isRunning = true;
+      SDL_Event event;
+      while (isRunning)
+      {
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_QUIT)
@@ -45,18 +59,6 @@ int main( int argc, char* args[] )
             isRunning = false;
             }
         }
-
-        //Get window surface
-        screenSurface = SDL_GetWindowSurface(window);
-
-        //Fill the surface white
-        SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-        
-        //Update the surface
-        SDL_UpdateWindowSurface(window);
-
-        //Wait two seconds
-        SDL_Delay(100);
       }
     }
   }
