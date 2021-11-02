@@ -6,7 +6,7 @@
 
 #include "main.hpp"
 
-/*
+#define ENGINE_NAME "Advanium Engine"
 // Globals
 // Window
 SDL_Window* gWindow = NULL;
@@ -14,7 +14,6 @@ SDL_Window* gWindow = NULL;
 SDL_Surface* gScreenSurface = NULL;
 // Image to be laoded
 SDL_Surface* gMarioWorld = NULL;
-*/
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -33,6 +32,15 @@ bool init()
   else
   {
     logSystem::log("Initialized SDL", status::code::DEBUG);
+    // create window
+    gWindow = SDL_CreateWindow(ENGINE_NAME, SDL_WINDOWPOS_UNDEFINED, 
+                SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT,
+                SDL_WINDOW_OPENGL);
+
+    if (gWindow == NULL)
+    {
+    }
+
   }
 
   return success;
