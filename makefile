@@ -10,3 +10,6 @@ advanium: $(SOURCE_PATH)/main.cpp
 .PHONY: clean
 clean:
 	rm $(EXE)
+
+run:
+	./build/advanium
