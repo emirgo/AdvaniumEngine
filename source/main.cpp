@@ -6,8 +6,6 @@
 
 #include "main.hpp"
 
-#define ENGINE_NAME "Advanium Engine"
-// Globals
 // Window
 SDL_Window* gWindow = NULL;
 // Surface

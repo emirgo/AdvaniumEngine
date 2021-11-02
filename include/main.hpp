@@ -4,3 +4,5 @@
 
 #include "statusCodes.hpp"
 #include "logSystem.hpp"
+
+#define ENGINE_NAME "Advanium Engine"
