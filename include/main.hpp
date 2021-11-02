@@ -2,4 +2,5 @@
 #include <iostream>
 #include <stdio.h>
 
+#include "statusCodes.hpp"
 #include "logSystem.hpp"

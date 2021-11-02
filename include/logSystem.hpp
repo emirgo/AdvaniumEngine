@@ -2,10 +2,10 @@
 
 namespace logSystem
 {
-    void log(std::string message, uint8_t errorCode)
+    void log(std::string message, uint8_t statusCode)
     {
         std::cout << "[SYSTEM]";
-        switch ()
+        switch (statusCode)
         {
             default:
                 std::cout << "[DEBUG]";
@@ -17,17 +17,17 @@ namespace logSystem
                 std::cout << "[ERROR]"; 
         }
 
-        std::cout << message << std::endl;
+        std::cout << ": " << message << std::endl;
     }
 
-    void log(int number)
+    void log(int number, uint8_t statusCode)
     {
-        log(std::to_string(number));
+        log(std::to_string(number), statusCode);
     }
 
-    void log(float number)
+    void log(float number, uint8_t statusCode)
     {
-        log(std::to_string(number));
+        log(std::to_string(number), statusCode);
     }
 
 }
