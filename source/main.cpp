@@ -39,6 +39,14 @@ bool init()
 
     if (gWindow == NULL)
     {
+      logSystem::log("Failed to create window", status::code::ERROR);
+      logSystem::log(SDL_GetError(), status::code::ERROR);
+      success = false;
+    }
+    else
+    {
+      // get window surface
+      gScreenSurface = SDL_GetWindowSurface(gWindow);
     }
 
   }
