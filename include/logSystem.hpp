@@ -2,9 +2,21 @@
 
 namespace logSystem
 {
-
-    void log(std::string message)
+    void log(std::string message, uint8_t errorCode)
     {
+        std::cout << "[SYSTEM]";
+        switch ()
+        {
+            default:
+                std::cout << "[DEBUG]";
+                break;
+            case 1:
+                std::cout << "[WARNING]";
+                break;
+            case 2:
+                std::cout << "[ERROR]"; 
+        }
+
         std::cout << message << std::endl;
     }
 

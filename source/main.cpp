@@ -25,6 +25,16 @@ bool init()
   // init flag
   bool success = true;
 
+  // init SDL
+  if (SDL_Init(SDL_INIT_VIDEO) < 0)
+  {
+    logSystem::log("Failed to initialize SDL", 2);
+  }
+  else
+  {
+
+  }
+
   return success;
 }
 
