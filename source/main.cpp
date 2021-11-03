@@ -62,7 +62,7 @@ bool loadMedia()
     bool success = true;
 
     // load splash image
-    gHelloWorld = SDL_LoadBMP("logo.bmp");
+    gHelloWorld = SDL_LoadBMP("assets/logo.bmp");
     if (gHelloWorld == NULL)
     {
         logSystem::log(("Unable to load image"), 
