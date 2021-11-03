@@ -52,8 +52,27 @@ bool init()
   return success;
 }
 
+void close()
+{
+  //deallocate surface
+  SDL_FreeSurface(gMarioWorld);
+  gMarioWorld = NULL;
+  logSystem::log("Deallocate surface", status::code::DEBUG);
+  
+  // destroy window
+  SDL_DestroyWindow(gWindow);
+  gWindow = NULL;
+  logSystem::log("Deallocate surface", status::code::DEBUG);
+
+  // quit SDL
+  SDL_Quit();
+  logSystem::log("Quit SDL", status::code::DEBUG);
+}
+
 int main(int argc, char* args[])
 {
   init();
+  // load image
+  close();
   return 0;
 }
