@@ -6,4 +6,4 @@
 #include "logSystem.hpp"
 
 #define ENGINE_NAME "Advanium Engine"
-#define ENGINE_VERSION "0.0.5"
+#define ENGINE_VERSION "0.0.6"
