@@ -6,68 +6,85 @@
 
 #include "main.hpp"
 
+// Window
+SDL_Window* gWindow = NULL;
+// Surface
+SDL_Surface* gScreenSurface = NULL;
+// Image to be laoded
+SDL_Surface* gMarioWorld = NULL;
+
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-int main(int argc, char* args[])
+bool init()
 {
-  //The window we'll be rendering to
-  SDL_Window* window = NULL;
+  // init flag
+  bool success = true;
 
-  //The surface contained by the window
-  SDL_Surface* screenSurface = NULL;
-
-  //Initialize SDL
-  if(SDL_Init( SDL_INIT_VIDEO ) < 0)
+  // init SDL
+  if (SDL_Init(SDL_INIT_VIDEO) < 0)
   {
-    printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+    logSystem::log("Failed to initialize SDL", status::code::ERROR);
   }
   else
   {
-    //Create window
-    window = SDL_CreateWindow( "Advanium Engine", SDL_WINDOWPOS_UNDEFINED, 
-                SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL );
-                
-    if( window == NULL )
+    logSystem::log("Initialized SDL", status::code::DEBUG);
+    // create window
+    gWindow = SDL_CreateWindow(ENGINE_NAME, SDL_WINDOWPOS_UNDEFINED, 
+                SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT,
+                SDL_WINDOW_OPENGL);
+
+    if (gWindow == NULL)
     {
-      printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+      logSystem::log("Failed to create window", status::code::ERROR);
+      logSystem::log(SDL_GetError(), status::code::ERROR);
+      success = false;
     }
     else
     {
-      //Get window surface
-      screenSurface = SDL_GetWindowSurface(window);
-
-      //Fill the surface white
-      SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-      
-      //Update the surface
-      SDL_UpdateWindowSurface(window);
-
-      //Wait two seconds
-      SDL_Delay(100);
-
-      // event loop
-      bool isRunning = true;
-      SDL_Event event;
-      while (isRunning)
-      {
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT)
-            {
-            isRunning = false;
-            }
-        }
-      }
+      // get window surface
+      gScreenSurface = SDL_GetWindowSurface(gWindow);
     }
+
   }
 
-  //Destroy window
-  SDL_DestroyWindow( window );
+  return success;
+}
 
-  //Quit SDL subsystems
+void close()
+{
+  //deallocate surface
+  SDL_FreeSurface(gMarioWorld);
+  gMarioWorld = NULL;
+  logSystem::log("Deallocate surface", status::code::DEBUG);
+  
+  // destroy window
+  SDL_DestroyWindow(gWindow);
+  gWindow = NULL;
+  logSystem::log("Deallocate surface", status::code::DEBUG);
+
+  // quit SDL
   SDL_Quit();
+  logSystem::log("Quit SDL", status::code::DEBUG);
+}
+
+int main(int argc, char* args[])
+{
+  if (!init())
+  {
+    logSystem::log("Failed to initialize", status::code::ERROR);
+  }
+  else
+  {
+    // load media
+    // apply the image to the surface
+    // update window surface
+    // wait
+  }
+
+  // free resources and close SDL
+  close();
 
   return 0;
 }
