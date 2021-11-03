@@ -7,3 +7,6 @@ Follow engine scrum board [here](https://trello.com/b/Rsd7TdH4/advanium-engine).
 <br>
 Engine supports OpenGL by default.<br>
 [Get the latest SDL development libs here.](https://www.libsdl.org/download-2.0.php)
+<br>
+Example scene:<br>
+![Example scene screenshot](https://i.ibb.co/xfzcs51/Screenshot-2021-11-03-at-19-52-21.png)

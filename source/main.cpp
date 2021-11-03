@@ -11,7 +11,7 @@ SDL_Window* gWindow = NULL;
 // Surface
 SDL_Surface* gScreenSurface = NULL;
 // Image to be laoded
-SDL_Surface* gMarioWorld = NULL;
+SDL_Surface* gHelloWorld = NULL;
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -52,17 +52,35 @@ bool init()
   return success;
 }
 
+bool loadMedia()
+{
+    // load success flag
+    bool success = true;
+
+    // load splash image
+    gHelloWorld = SDL_LoadBMP("logo.bmp");
+    if (gHelloWorld == NULL)
+    {
+        logSystem::log(("Unable to load image"), 
+                        status::code::ERROR);
+        logSystem::log(SDL_GetError(), status::code::ERROR);
+        success = false;
+    }
+
+    return success;
+}
+
 void close()
 {
   //deallocate surface
-  SDL_FreeSurface(gMarioWorld);
-  gMarioWorld = NULL;
+  SDL_FreeSurface(gHelloWorld);
+  gHelloWorld = NULL;
   logSystem::log("Deallocate surface", status::code::DEBUG);
   
   // destroy window
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;
-  logSystem::log("Deallocate surface", status::code::DEBUG);
+  logSystem::log("Deallocate window", status::code::DEBUG);
 
   // quit SDL
   SDL_Quit();
@@ -78,9 +96,31 @@ int main(int argc, char* args[])
   else
   {
     // load media
-    // apply the image to the surface
-    // update window surface
-    // wait
+    if (!loadMedia())
+    {
+        logSystem::log("Failed to load media", status::code::ERROR);
+    }
+    else
+    {
+        
+        bool isRunning = true;
+        SDL_Event event;
+        while (isRunning)
+        {
+            while (SDL_PollEvent(&event))
+            {
+                if (event.type == SDL_QUIT)
+                {
+                    isRunning = false;
+                }
+            }
+
+            // apply the image
+            SDL_BlitSurface(gHelloWorld, NULL, gScreenSurface, NULL);
+            // update the surface
+            SDL_UpdateWindowSurface(gWindow);
+        }
+    }
   }
 
   // free resources and close SDL
