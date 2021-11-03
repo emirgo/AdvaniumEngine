@@ -20,6 +20,11 @@ namespace logSystem
         std::cout << ": " << message << std::endl;
     }
 
+    void log(std::string message)
+    {
+        log(message, 0);
+    }
+
     void log(int number, uint8_t statusCode)
     {
         log(std::to_string(number), statusCode);
@@ -29,5 +34,4 @@ namespace logSystem
     {
         log(std::to_string(number), statusCode);
     }
-
 }
