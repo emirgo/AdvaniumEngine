@@ -71,8 +71,20 @@ void close()
 
 int main(int argc, char* args[])
 {
-  init();
-  // load image
+  if (!init())
+  {
+    logSystem::log("Failed to initialize", status::code::ERROR);
+  }
+  else
+  {
+    // load media
+    // apply the image to the surface
+    // update window surface
+    // wait
+  }
+
+  // free resources and close SDL
   close();
+
   return 0;
 }
