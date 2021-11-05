@@ -1,5 +1,6 @@
 # Advanium Engine
-## _Copyright @ Vaconia_
+## _Credit: Emirhan Gocturk_
+### _PLEASE RESPECT THE LICENSE OF THE SOFTWARE_
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/)
 <br>
