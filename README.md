@@ -11,3 +11,11 @@ Engine supports OpenGL by default.<br>
 <br>
 Example scene:<br>
 ![Example scene screenshot](https://i.ibb.co/xfzcs51/Screenshot-2021-11-03-at-19-52-21.png)
+
+## Installation
+<ul>
+  <li>Clone the repo</li>
+  <li>Navigate to base path of the repo and run the command: <b>mkdir build</b></li>
+  <li>Run the command: make</li>
+  <li>Run the command: make run</li>
+</ul>
