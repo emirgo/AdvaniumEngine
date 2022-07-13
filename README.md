@@ -1,7 +1,4 @@
 # Advanium Engine
-## _Credit: Emirhan Gocturk_
-### _PLEASE RESPECT THE LICENSE OF THE SOFTWARE_
-
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/)
 <br>
 Follow engine scrum board [here](https://trello.com/b/Rsd7TdH4/advanium-engine).<br>
